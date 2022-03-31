@@ -11,4 +11,4 @@ keywords = ["soundex", "nlp", "search", "language", "dictionary", "japanese"]
 exclude = ["target", "CHANGELOG.md", "paper.tex", "Cargo.lock"]
 
 [dependencies]
-jp_utils = {path = "../jp_utils"}
+jp_utils = {git = "https://github.com/JojiiOfficial/jp_utils"}
