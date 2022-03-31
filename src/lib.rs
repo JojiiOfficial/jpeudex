@@ -4,6 +4,7 @@
 use std::ops;
 
 use jp_utils::{hiragana::Syllable, JapaneseExt};
+use serde::{Deserialize, Serialize};
 
 pub mod raw;
 
@@ -13,7 +14,7 @@ pub mod tests;
 /// A phonetic hash.
 ///
 /// Using the `Sub` implementation of the hashes will give you the difference.
-#[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Debug)]
+#[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Debug, Deserialize, Serialize)]
 pub struct Hash {
     hash: u128,
 }
