@@ -25,9 +25,9 @@ fn test_no_similar() {
 /*
 #[test]
 fn test_japanese2() {
-    let a = Hash::new_2("せいかく");
+    let a = Hash::new_unchecked_2("せいかく");
     println!("");
-    let b = Hash::new_2("せっかく");
+    let b = Hash::new_unchecked_2("せっかく");
     println!("a:\t{:128b}", a.hash);
     println!("b:\t{:128b}", b.hash);
     println!("xor:\t{:128b}", (a - b).xor());
@@ -37,8 +37,8 @@ fn test_japanese2() {
 
 #[test]
 fn test_japanese() {
-    let a = Hash::new("しおり");
-    let b = Hash::new("りんご");
+    let a = Hash::new_unchecked("しおり");
+    let b = Hash::new_unchecked("りんご");
     let xor = (a - b).xor();
     println!("a\t{:128b}", a.hash);
     println!("b\t{:128b}", b.hash);
@@ -69,16 +69,17 @@ fn test_similar() {
     assert!(diff("きづく", "きつく").similar());
     assert!(diff("ひょか", "ひょうか").similar());
     assert!(diff("えいがかん", "えいご").similar());
+    assert!(diff("あおそら", "あおぞら").similar());
 }
 
 pub fn diff(a: &str, b: &str) -> Difference {
-    Hash::new(a) - Hash::new(b)
+    Hash::new_unchecked(a) - Hash::new_unchecked(b)
 }
 
 pub fn assert_eq_test(a: &str, b: &str) {
-    assert_eq!(Hash::new(a), Hash::new(b));
+    assert_eq!(Hash::new_unchecked(a), Hash::new_unchecked(b));
 }
 
 pub fn is_eq(a: &str, b: &str) -> bool {
-    Hash::new(a) == Hash::new(b)
+    Hash::new_unchecked(a) == Hash::new_unchecked(b)
 }

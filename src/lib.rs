@@ -20,20 +20,21 @@ pub struct Hash {
 }
 
 impl Hash {
-    pub fn new(string: &str) -> Hash {
-        let hash = Self::new_checked(string);
+    pub fn new_unchecked(string: &str) -> Hash {
+        let hash = Self::new(string);
         if hash.is_none() {
             panic!("Hash {string} is invalid");
         }
         hash.unwrap()
     }
 
-    pub fn new_checked(string: &str) -> Option<Hash> {
+    pub fn new(string: &str) -> Option<Hash> {
         if !string.is_hiragana() || string.trim().is_empty() {
             return None;
         }
 
         let chars: Vec<_> = string.chars().collect();
+
         let mut b = 0;
         let mut res = 0;
         let mut n = 1u8;
@@ -49,6 +50,7 @@ impl Hash {
             last = i;
         }
         first <<= (16 - first_len) * 8;
+        let mut added = 0;
 
         loop {
             b += 1;
@@ -73,7 +75,12 @@ impl Hash {
                 res |= i as u128;
                 n <<= 1;
                 last = i;
+                added += 1;
             }
+        }
+
+        if added < chars.len() {
+            return None;
         }
 
         // Align to left of byte array
@@ -187,10 +194,4 @@ impl Difference {
     pub fn similar(self) -> bool {
         self.dist() < 30
     }
-}
-
-/// Deprecated, do not use.
-#[deprecated]
-pub fn similar(a: &str, b: &str) -> bool {
-    (Hash::new(a) - Hash::new(b)).similar()
 }
