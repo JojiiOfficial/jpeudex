@@ -37,7 +37,7 @@ impl Hash {
 
         let mut b = 0;
         let mut res = 0;
-        let mut n = 1u8;
+        let mut n = 1u16;
         let mut last = 0;
 
         let first_syll = split_syllable(chars[0]);

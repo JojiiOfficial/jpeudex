@@ -9,6 +9,7 @@ fn test_exact() {
 #[test]
 fn test_mismatch() {
     assert!(!is_eq("せんたく", "かもく"));
+    assert!(!is_eq("かたつけ", "かたづける"));
 }
 
 #[test]
@@ -37,8 +38,8 @@ fn test_japanese2() {
 
 #[test]
 fn test_japanese() {
-    let a = Hash::new_unchecked("しおり");
-    let b = Hash::new_unchecked("りんご");
+    let a = Hash::new_unchecked("かたつけ");
+    let b = Hash::new_unchecked("かたづける");
     let xor = (a - b).xor();
     println!("a\t{:128b}", a.hash);
     println!("b\t{:128b}", b.hash);
