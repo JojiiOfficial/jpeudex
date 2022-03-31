@@ -1,0 +1,14 @@
+[package]
+edition = "2021"
+name = "jpeudex"
+version = "0.1.1"
+authors = ["ticki <ticki@users.noreply.github.com>", "jojii <jojii@gmx.net>"]
+description = "A blazingly fast phonetic reduction/hashing algorithm for japanese."
+repository = "https://github.com/ticki/eudex"
+documentation = "https://docs.rs/crate/eudex"
+license = "MIT"
+keywords = ["soundex", "nlp", "search", "language", "dictionary", "japanese"]
+exclude = ["target", "CHANGELOG.md", "paper.tex", "Cargo.lock"]
+
+[dependencies]
+jp_utils = {path = "../jp_utils"}
