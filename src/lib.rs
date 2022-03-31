@@ -96,10 +96,8 @@ fn split_syllable(inp: char) -> Vec<u8> {
         c = v;
         v = None;
     }
-    print!("{inp} -> {c:?}, {v:?}");
     let c = c.unwrap();
     let (cons_hash, vowel_hash) = raw::map_phone(c, v);
-    println!(";{cons_hash:?}, {vowel_hash:?}");
 
     let mut iter = vec![cons_hash];
     if let Some(vh) = vowel_hash {
