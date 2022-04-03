@@ -38,13 +38,13 @@ fn test_japanese2() {
 
 #[test]
 fn test_japanese() {
-    let a = Hash::new_unchecked("かたつけ");
-    let b = Hash::new_unchecked("かたづける");
+    let a = Hash::new_unchecked("はくざい");
+    let b = Hash::new_unchecked("はくさい");
     let xor = (a - b).xor();
     println!("a\t{:128b}", a.hash);
     println!("b\t{:128b}", b.hash);
     println!("XOR\t{:128b}", xor);
-    println!("dist: {}", (a - b).hamming());
+    println!("dist: {}", (a - b).dist());
 }
 
 #[test]
@@ -71,6 +71,7 @@ fn test_similar() {
     assert!(diff("ひょか", "ひょうか").similar());
     assert!(diff("えいがかん", "えいご").similar());
     assert!(diff("あおそら", "あおぞら").similar());
+    assert!(diff("かざむき", "かさむき").similar());
 }
 
 pub fn diff(a: &str, b: &str) -> Difference {
