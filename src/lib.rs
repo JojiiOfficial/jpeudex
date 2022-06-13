@@ -50,7 +50,7 @@ impl Hash {
             last = i;
         }
         first <<= (16 - first_len) * 8;
-        let mut added = 0;
+        let mut added = 1;
 
         loop {
             b += 1;
@@ -160,15 +160,15 @@ impl Difference {
             + ((self.xor >> 32) as u8).count_ones() * 2
             + ((self.xor >> 40) as u8).count_ones() * 3
             + ((self.xor >> 48) as u8).count_ones() * 3
-            + ((self.xor >> 56) as u8).count_ones() * 5
-            + ((self.xor >> 64) as u8).count_ones() * 8
-            + ((self.xor >> 72) as u8).count_ones() * 8
-            + ((self.xor >> 80) as u8).count_ones() * 12
-            + ((self.xor >> 88) as u8).count_ones() * 12
-            + ((self.xor >> 96) as u8).count_ones() * 14
-            + ((self.xor >> 104) as u8).count_ones() * 14
-            + ((self.xor >> 112) as u8).count_ones() * 14
-            + ((self.xor >> 120) as u8).count_ones() * 14
+            + ((self.xor >> 56) as u8).count_ones() * 4
+            + ((self.xor >> 64) as u8).count_ones() * 4
+            + ((self.xor >> 72) as u8).count_ones() * 4
+            + ((self.xor >> 80) as u8).count_ones() * 4
+            + ((self.xor >> 88) as u8).count_ones() * 4
+            + ((self.xor >> 96) as u8).count_ones() * 4
+            + ((self.xor >> 104) as u8).count_ones() * 4
+            + ((self.xor >> 112) as u8).count_ones() * 4
+            + ((self.xor >> 120) as u8).count_ones() * 4
     }
 
     /// The XOR distance.
@@ -192,6 +192,6 @@ impl Difference {
     /// Does this difference constitute similarity?
     #[inline]
     pub fn similar(self) -> bool {
-        self.dist() < 30
+        self.dist() < 20
     }
 }

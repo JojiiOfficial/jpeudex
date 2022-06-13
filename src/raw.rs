@@ -28,7 +28,7 @@ const PHONES: [u8; LETTERS as usize] = [
     0b00011000, //d
     0b10100001, //e
     0b00000100, //f
-    0b00001000, //g
+    0b10001000, //g
     0b00100000, //h
     0b10100001, //i
     0b10011000, //j
@@ -40,7 +40,7 @@ const PHONES: [u8; LETTERS as usize] = [
     0b01001000, //p
     99,         //q
     0b00010001, //r
-    0b10010000, //s
+    0b10011000, //s
     0b00011000, //t
     0b00010001, //u
     99,         //v
@@ -56,10 +56,10 @@ const U_PHONE: u8 = PHONES[20];
 #[inline]
 pub fn map_phone(a: char, b: Option<char>) -> (u8, Option<u8>) {
     match (a, b) {
+        ('z', Some('u')) => (0b0011000, Some(U_PHONE)),  // ず
+        ('d', Some('u')) => (0b0011000, Some(U_PHONE)),  // づ
+        ('t', Some('u')) => (0b0011000, Some(U_PHONE)),  // つ
         ('z', Some('i')) => (0b00011000, Some(I_PHONE)), // じ
-        ('z', Some('u')) => (0b00011000, Some(U_PHONE)), // ず
-        ('d', Some('u')) => (0b00011000, Some(U_PHONE)), // づ
-        ('t', Some('u')) => (0b00011000, Some(U_PHONE)), // つ
         ('d', Some('i')) => (0b00011000, Some(I_PHONE)), // ぢ
         ('t', Some('i')) => (0b00011000, Some(I_PHONE)), // ち
         ('h', Some('u')) => (0b00000100, Some(U_PHONE)), // ふ
