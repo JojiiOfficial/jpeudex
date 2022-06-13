@@ -154,21 +154,25 @@ impl Difference {
     /// For most use cases, this metric is the preferred one.
     #[inline(always)]
     pub fn dist(self) -> u32 {
+        self.xor.count_ones() * 4
+        /*
         (self.xor as u8).count_ones()
-            + ((self.xor >> 16) as u8).count_ones() * 2
-            + ((self.xor >> 24) as u8).count_ones() * 2
-            + ((self.xor >> 32) as u8).count_ones() * 2
-            + ((self.xor >> 40) as u8).count_ones() * 3
-            + ((self.xor >> 48) as u8).count_ones() * 3
+            + ((self.xor >> 8) as u8).count_ones() * 4
+            + ((self.xor >> 16) as u8).count_ones() * 4
+            + ((self.xor >> 24) as u8).count_ones() * 4
+            + ((self.xor >> 32) as u8).count_ones() * 4
+            + ((self.xor >> 40) as u8).count_ones() * 4
+            + ((self.xor >> 48) as u8).count_ones() * 4
             + ((self.xor >> 56) as u8).count_ones() * 4
             + ((self.xor >> 64) as u8).count_ones() * 4
-            + ((self.xor >> 72) as u8).count_ones() * 4
+            + ((self.xor >> 72) as u8).count_ones() * 5
             + ((self.xor >> 80) as u8).count_ones() * 4
             + ((self.xor >> 88) as u8).count_ones() * 4
             + ((self.xor >> 96) as u8).count_ones() * 4
             + ((self.xor >> 104) as u8).count_ones() * 4
             + ((self.xor >> 112) as u8).count_ones() * 4
             + ((self.xor >> 120) as u8).count_ones() * 4
+        */
     }
 
     /// The XOR distance.
