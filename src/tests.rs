@@ -29,13 +29,13 @@ fn test_no_similar() {
 
 #[test]
 fn test_japanese2() {
-    let a = Hash::new_unchecked("だちあがる");
+    let a = Hash::new_unchecked("はは");
     println!("");
-    let b = Hash::new_unchecked("たちあがる");
+    let b = Hash::new_unchecked("かか");
+    println!("dist: {}", (b - a).dist());
     println!("a:\t{:128b}", a.hash);
     println!("b:\t{:128b}", b.hash);
     println!("xor:\t{:128b}", (a - b).xor());
-    println!("dist: {}", (a - b).dist());
 }
 
 #[test]

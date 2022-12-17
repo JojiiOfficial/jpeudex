@@ -11,5 +11,5 @@ keywords = ["soundex", "nlp", "search", "language", "dictionary", "japanese"]
 exclude = ["target", "CHANGELOG.md", "paper.tex", "Cargo.lock"]
 
 [dependencies]
-jp_utils = {git = "https://github.com/JojiiOfficial/jp_utils"}
-serde = { version = "1.0.137", default-features = false, features = ["derive"] }
+jp_utils = {git = "https://github.com/JojiiOfficial/jp_utils", features = ["hiragana"]}
+serde = { version = "1.0.151", default-features = false, features = ["derive"] }
