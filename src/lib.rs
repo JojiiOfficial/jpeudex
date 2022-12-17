@@ -49,7 +49,7 @@ impl Hash {
             n <<= 1;
             last = i;
         }
-        first <<= (16 - first_len) * 8;
+        first = first.checked_shl(((16 - first_len) * 8) as u32)?;
         let mut added = 1;
 
         loop {
